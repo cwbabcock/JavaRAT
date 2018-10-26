@@ -1,25 +1,25 @@
 # JavaRAT
 
-# Description
-What?
+## Description
+### What?
 
 `Java Rat` is a remote administration tool in java to allow someone to pull information from a larege group of computers relatively quickly.
 
-Why?
+### Why?
 
 This program serves as a way for us to increase our fundamental understanding of network programming, and creates a great tool that is relelvant in some real world settings
 
-How?
+### How?
 
 This is designed as a Remote Administration Tool (RAT) that calls back to a Command and Control Server (CNC Server). The CNC server will allow a user to send commands/requests to individual clients and get a reply based on the request; whether it be for a file, OS Version, or other information. The RAT will perform actions on the machine it is running on and send data back to the CNC server when finished.
 
-# Deliverables
+## Deliverables
 
 1. CNC Server
 2. Client / RAT
 3. Documentation 
 
-# Plan
+## Plan
 
 * Week 1 (Oct 29 - Nov 5):
 - Research current solutions
@@ -43,7 +43,7 @@ This is designed as a Remote Administration Tool (RAT) that calls back to a Comm
 - Create presentation
 - Create virtual environment for presentation
 
-# Team members
+## Team members
 
 * Andrew Bissel, Team Lead, Networking
 * Leon Chen, CNC Server
