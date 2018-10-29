@@ -1,4 +1,4 @@
-# Progress Updates
+# Progress Updates (Oct 22 - Dec 5)
 
 ## Week 0 (Oct 22 - Oct 29)
 
