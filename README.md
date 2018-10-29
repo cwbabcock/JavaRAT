@@ -21,25 +21,25 @@ This is designed as a Remote Administration Tool (RAT) that calls back to a Comm
 
 ## Plan
 
-* Week 1 (Oct 29 - Nov 5):
+* **Week 1 (Oct 29 - Nov 5):**
 - Research current solutions
 - Find third party libraries needed
 - Create a user-story
 - Major/Big-Picture design choices
-* Week 2 (Nov 5 - Nov 12):
+* **Week 2 (Nov 5 - Nov 12):**
 - Smaller design choices
 - Start writing UML documentation
 - Start writing manual / user-guide
-* Week 3 (Nov 12 - Nov 19)
+* **Week 3 (Nov 12 - Nov 19)**
 - Finalize design / documentation
 - Start writing pseudocode
-* Week 4 (Nov 19 - Nov 26)
+* **Week 4 (Nov 19 - Nov 26)**
 - Development
 - Adding documentation to github
-* Week 5 (Nov 26 - Dec 2)
+* **Week 5 (Nov 26 - Dec 2)**
 - Finish MVP
 - Bug testing / fixing
-* Week 6 (Dec 2 - Dec 9)
+* **Week 6 (Dec 2 - Dec 9)**
 - Create presentation
 - Create virtual environment for presentation
 
