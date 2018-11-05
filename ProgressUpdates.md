@@ -31,3 +31,11 @@
 * Scheduling conflictwith group meetings
 * Had issue with creating ports and threading in the program
 * Team needs more meetings in person
+
+## Week 2 (Nov 5 - Nov 12)
+
+### What did your team do last week?
+
+### What will you do this week?
+
+### Any blocking issues/challanges need to be addressed?
