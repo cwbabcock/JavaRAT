@@ -19,7 +19,15 @@
 ## Week 1 (Oct 29  - Nov 5)
 
 ### What did your team do last week?
+* Started creating the client
+* Change group meeting time
 
 ### What will you do this week?
+* Create and Finalize UML diagram
+* Increase the frequncy of meetings
+* Continue to work on client
 
 ### Any blocking issues/challenges need to be addressed?
+* Scheduling conflictwith group meetings
+* Had issue with creating ports and threading in the program
+* Team needs more meetings in person
