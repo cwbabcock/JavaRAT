@@ -47,3 +47,6 @@
 ### What will you do this week?
 
 ### Any blocking issues/challanges need to be addressed?
+
+# Comments
+1. I would expect to see more progress toward implementation. At least the project skeleton should be up by now.
