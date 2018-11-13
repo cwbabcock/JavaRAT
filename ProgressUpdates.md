@@ -1,4 +1,4 @@
-# Progress Updates (Oct 22 - Dec 5)
+# Progress Updates (Oct 22 - Dec 3)
 
 ## Week 0 (Oct 22 - Oct 29)
 
@@ -42,11 +42,28 @@
 ## Week 2 (Nov 5 - Nov 12)
 
 ### What did your team do last week?
-
+* Created and Finalized UML Disgram
+* Increased Frequencey of the meetings
+* Discuss design of the program
 
 ### What will you do this week?
+* Create Skeleton Code and Start Coding the project
+* Meet w/ Team Tuesday, Wednesday, and Friday 
+* Create an Use Case (User Story)
 
 ### Any blocking issues/challanges need to be addressed?
+* Determing the best way to Pull Keylogger File from RAT to Client
+
+### Week 3 (Nov 12 - Nov 19)
+
+### What did your team do last week?
+*
+
+### What will you do this week?
+*
+
+### What What will you do this week?
+* 
 
 # Comments
 1. I would expect to see more progress toward implementation. At least the project skeleton should be up by now.
