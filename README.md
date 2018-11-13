@@ -39,7 +39,6 @@ This is designed as a Remote Administration Tool (RAT) that calls back to a Comm
 * **Week 5 (Nov 26 - Dec 2)**
 - Finish MVP
 - Bug testing / fixing
-* **Week 6 (Dec 2 - Dec 9)**
 - Create presentation
 - Create virtual environment for presentation
 
