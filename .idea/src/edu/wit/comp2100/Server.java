@@ -1,11 +1,13 @@
 package edu.wit.comp2100;
 
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import java.util.Hashtable;
 
 public class Server {
 
     //using hash table in case we use a constant thread to search for clients
-    Hashtable<String, Client> clients = new Hashtable<String, Client>();
+    private Hashtable<String, Client> clients = new Hashtable<String, Client>();
 
     /*
     Take user input of a full string as user input
@@ -27,7 +29,7 @@ public class Server {
     /*
     start a thread to start searching for network clients/bootstrappers
      */
-    private boolean startSearch(){
+    private boolean startNetworkScan(){
         //TODO implement this method
         return false;
     }
@@ -40,6 +42,11 @@ public class Server {
         return false;
     }
 
+    private boolean createClient(Inet4Address client_IP) throws UnknownHostException { //TODO handle exception
+        Client newClient = new Client(client_IP);
+        clients.put(newClient.getClientName(), newClient);
+        return true;
+    }
 
 
 }

