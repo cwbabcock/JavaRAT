@@ -28,9 +28,12 @@ public class Server {
 
     /*
     start a thread to start searching for network clients/bootstrappers
+    The thread will search each (not already found) IP address on the network
      */
     private boolean startNetworkScan(){
         //TODO implement this method
+
+
         return false;
     }
 
