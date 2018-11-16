@@ -2,12 +2,14 @@ package edu.wit.comp2100;
 
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Server {
 
     //using hash table in case we use a constant thread to search for clients
     private Hashtable<String, Client> clients = new Hashtable<String, Client>();
+
 
     /*
     Take user input of a full string as user input
@@ -24,6 +26,10 @@ public class Server {
      */
     private void parseCommand(String[] args){
         //TODO implement this method
+    }
+
+    private void parseServerCommand(String[] args){
+
     }
 
     /*
