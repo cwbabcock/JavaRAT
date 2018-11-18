@@ -19,14 +19,6 @@ server shutdown
 client1 send file RAT -- sends RAT to bootstrapper
 server startnetworkscan
 
-
-
-
-
-
-
-
-
 For leon:
 
 list of methods:
@@ -39,7 +31,6 @@ if != server, send the rest of the command to the specified client.
 ...
 ...
 
-
 Server.parseCommand()
 check first word of array
 if = server
@@ -47,3 +38,13 @@ if = server
 else
     find client with correct name
     run Client.parseSecondWord()
+    
+## Available Commands
+
+### Server
+* startscan //Starts the network Scanner
+* stopscan // Stops the network Scanner
+
+### Client
+* 
+* 
