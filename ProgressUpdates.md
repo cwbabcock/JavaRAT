@@ -57,13 +57,32 @@
 ### Week 3 (Nov 12 - Nov 19)
 
 ### What did your team do last week?
-*
+* Create Skeleton Code and Start Coding the project
+* Meet w/ Team Tuesday, Wednesday, and Friday 
+* Create an Use Case (User Story)
 
 ### What will you do this week?
-*
+* nearly finished skeleton code
+* created network scanner
+* created structure to parse commands and perform actions
 
-### What What will you do this week?
-* 
+### Challenges?
+* time spent with teammates is insufficient
+
+### Week 4 (Nov 19 - Nov 26)
+
+### What did your team do last week?
+* nearly finished skeleton code
+* created network scanner
+* created structure to parse commands and perform actions
+
+### What will you do this week?
+* finish skeleton code
+* bootstrapper
+* file transfer
+
+### Challenges?
+* none
 
 # Comments
 1. I would expect to see more progress toward implementation. At least the project skeleton should be up by now.
