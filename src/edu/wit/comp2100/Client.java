@@ -12,12 +12,12 @@ public class Client {
     private String clientName;
     private static int numClients;
     private InetAddress Server_IP; //TODO fix cannot use Inet4Address (get compulation error from Client() constructor
-    private Inet4Address RAT_IP;
+    private InetAddress RAT_IP;
     private boolean isActive;
     private File lastRecievedFile;
     private final int DEFAULT_RAT_PORT = 0; //TODO decide on default port for rat client
 
-    Client() throws UnknownHostException {
+    private Client() throws UnknownHostException {
         /*
         TODO fix cannot use Inet4Address. Inet4Address.getLocalHost() gives us a compilation error.
         InetAddress is a superclass of Inet4Address so it is not compatible.
@@ -27,7 +27,7 @@ public class Client {
         this.clientName = "Client" + ++numClients; //increment number of clients and name client next number
     }
 
-    Client(Inet4Address client_IP) throws UnknownHostException{
+    Client(InetAddress client_IP) throws UnknownHostException{
         this();
         this.RAT_IP = client_IP;
     }
@@ -91,4 +91,5 @@ public class Client {
     public String getClientName(){
         return clientName;
     }
+    public InetAddress getRAT_IP() {return RAT_IP; }
 }
