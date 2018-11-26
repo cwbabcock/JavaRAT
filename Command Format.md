@@ -11,7 +11,7 @@ They will be broken up into sections separated by a space.
 
 ### Commands for demo
 
-client1 push RAT
-client1 pull keyLog
-server list clients
-client1 test
+* client1 push RAT
+* client1 pull keyLog
+* server list clients
+* client1 test
