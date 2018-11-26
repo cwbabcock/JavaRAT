@@ -88,13 +88,11 @@
 
 ### What did your team do last week
 * Finish the Skeleton Code
-* Bootstrapper
-* File transfer
 
 ### What will your team do this week
-* Finish Coding
+* Finish Coding (Bootstrapper and File transfer)
 * Start Debugging
-* Work on Presentation 
+* Work on the Presentation 
 
 ### Challanges?
 * Progress is going slow
