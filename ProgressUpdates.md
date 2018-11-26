@@ -84,5 +84,21 @@
 ### Challenges?
 * none
 
-# Comments
+### Week 5 (Nov 26 - Dec 3)
+
+### What did your team do last week
+* Finish the Skeleton Code
+* Bootstrapper
+* File transfer
+
+### What will your team do this week
+* Finish Coding
+* Start Debugging
+* Work on Presentation 
+
+### Challanges?
+* Progress is going slow
+* Team needs to meet more often
+
+# Comments (During week 3)
 1. I would expect to see more progress toward implementation. At least the project skeleton should be up by now.
