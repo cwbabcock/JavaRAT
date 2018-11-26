@@ -19,7 +19,7 @@ server shutdown
 client1 send file RAT -- sends RAT to bootstrapper
 server startnetworkscan
 
-For leon:
+For Leon:
 
 list of methods:
 getCommand() take user input as string, turn it into a String[]
@@ -46,5 +46,7 @@ else
 * stopscan // Stops the network Scanner
 
 ### Client
-* 
-* 
+* pushClient
+* pushFile
+* PullKeyLog
+* getClientName
