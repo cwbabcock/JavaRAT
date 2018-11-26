@@ -87,7 +87,7 @@
 ### Challenges?
 * none
 
-## Week 5 (Nov 26 - Dec 3)
+## Week 5 (Nov 26 - NOv 29)
 
 ### What did your team do last week
 * Finish the Skeleton Code
