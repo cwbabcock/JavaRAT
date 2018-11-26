@@ -70,7 +70,6 @@ public class Server {
     if found, adds them to
      */
     private static boolean startNetworkScan(){
-        //TODO fix hardcoded IP address (make it find "192.168.0." on its own
 
         try {
             ArrayList<String> IPs = portScanner.getBootstrapperIPs();
