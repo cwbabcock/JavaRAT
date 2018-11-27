@@ -18,6 +18,7 @@ public class portScanner {
     // Main (Nothing really to see here)
     public static ArrayList getBootstrapperIPs() throws IOException {
 
+		//TODO fix hardcoded IP address (make it find "192.168.0." on its own)
         ArrayList<String> openAddresses = checkHosts("192.168.1.");
 
         return openAddresses;

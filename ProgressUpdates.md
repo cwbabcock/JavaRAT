@@ -69,7 +69,10 @@
 ### Challenges?
 * time spent with teammates is insufficient
 
-### Week 4 (Nov 19 - Nov 26)
+### Comments (During week 3)
+1. I would expect to see more progress toward implementation. At least the project skeleton should be up by now.
+
+## Week 4 (Nov 19 - Nov 26)
 
 ### What did your team do last week?
 * nearly finished skeleton code
@@ -84,5 +87,20 @@
 ### Challenges?
 * none
 
-# Comments
-1. I would expect to see more progress toward implementation. At least the project skeleton should be up by now.
+## Week 5 (Nov 26 - NOv 29)
+
+### What did your team do last week
+* Finish the Skeleton Code
+* some bootstrapper code
+* research for file transfer
+* network scanning implemented and working
+
+### What will your team do this week
+* Finish Coding (Bootstrapper and File transfer)
+* keylogging to a file
+* Start Debugging
+* Work on the Presentation 
+
+### Challanges?
+* Progress is going slow
+* Some team members are not able to show at most meetings.
