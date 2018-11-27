@@ -6,6 +6,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Scanner;
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class Server {
@@ -15,8 +16,12 @@ public class Server {
 
     //queues commands made by a user so the server doesn't just hang while actions are done.
     private ArrayBlockingQueue<String[]> commandQueue = new ArrayBlockingQueue<String[]>(10);
+    //we are going to use a string[] and boolean for now;
+    private static String[] currentCommand;
+    private static boolean commandFinished;
 
     public static void main(String[] args){
+        commandFinished = true;
         start();
     }
 
@@ -27,7 +32,7 @@ public class Server {
      */
     private static void start(){
         System.out.println("Scanning network.... \n\n");
-        if (!startNetworkScan()){
+        if (!startNetworkScan()){ //TODO should this be negated here?
             System.out.println("FATAL ERR: Network Scan Failed");
             System.exit(0);
         }
@@ -41,7 +46,22 @@ public class Server {
             System.out.println(s + ", " + clients.get(s).getRAT_IP().getHostAddress());
         }
 
+        while (true) {
+            Scanner input = new Scanner(System.in);
+            String s;
+            //take input and add to input queue
+            if (commandFinished) {
+                //set next command to an array split by spaces, input parser will handle errors
+                System.out.println("Please enter a command: ");
+                currentCommand = input.nextLine().split(" ");
+                commandFinished = false; //set trigger for command to be run
 
+            }
+            if (!commandFinished) {
+                parseCommand(currentCommand);
+                commandFinished = true;
+            }
+        }
     }
 
     /*
@@ -57,11 +77,32 @@ public class Server {
 
     valid first arguments (args[0]) are included in the switch/case block
      */
-    private void parseCommand(String[] args){
-        //TODO implement this method
+    private static void parseCommand(String[] command){
+
+        //create new array from everything but the first word in the command
+        String[] nextPart = new String[command.length -1];
+        System.arraycopy(command, 1, nextPart, 0, command.length -1);
+
+        switch (command[0]){
+            case "server":
+                parseServerCommand(nextPart);
+                break;
+            case "stop":
+                System.exit(0);
+            default :
+                Client n = clients.get(command[0]);
+                if (n != null){
+                    n.parseCommand(nextPart);
+                    break;
+                } else {
+                    System.out.println("ERR: " + command[0] + " not recognized as a valid maching name.");
+                    break;
+                }
+        }
+
     }
 
-    private void parseServerCommand(String[] args){
+    private static void parseServerCommand(String[] args){
 
     }
 

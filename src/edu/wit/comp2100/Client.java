@@ -35,7 +35,7 @@ public class Client {
     /*
     sends command to RAT over a socket
      */
-    public void sendCommand(String[] args){
+    public void parseCommand(String[] args){
 
     }
 
