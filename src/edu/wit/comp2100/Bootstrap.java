@@ -7,14 +7,14 @@ public class Bootstrap {
 
     private static final Path DEFAULT_KEYLOG_PATH = null; //TODO decide on default path
     private static final Path DEFAULT_FILE_PATH = null; //TODO reference path where bootstrap is running/stored
-    private File lastReceivedFile;
+    private File lastReceivedFile, keyLogFile;
 
     /*
     Starts listener thread
      */
     public static void main(String[] args) {
 
-        listen();
+        start();
 
     }
 
@@ -24,7 +24,7 @@ public class Bootstrap {
      Create string array from input
      Pass string array to parseCommand
       */
-    private static void listen(){
+    private static void start(){
 
         //TODO: implement this method
 
@@ -47,7 +47,7 @@ public class Bootstrap {
      */
     private void startKeylogger(){
 
-        //TODO: implement this method
+
 
     }
 
