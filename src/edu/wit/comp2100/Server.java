@@ -20,7 +20,7 @@ public class Server {
     private static String[] currentCommand;
     private static boolean commandFinished;
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
         commandFinished = true;
         start();
     }
@@ -30,7 +30,7 @@ public class Server {
     -
     - start taking user input
      */
-    private static void start(){
+    private static void start() throws IOException{
         System.out.println("Scanning network.... \n\n");
         if (!startNetworkScan()){ //TODO should this be negated here?
             System.out.println("FATAL ERR: Network Scan Failed");
@@ -83,7 +83,7 @@ public class Server {
 
     valid first arguments (args[0]) are included in the switch/case block
      */
-    private static void parseCommand(String[] command){
+    private static void parseCommand(String[] command) throws IOException{
 
         //create new array from everything but the first word in the command
         String[] nextPart = breakOffFirstPart(command);

