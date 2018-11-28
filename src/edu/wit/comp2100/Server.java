@@ -40,11 +40,7 @@ public class Server {
 
         //at this point, all clients should be listed included in the hash table.
 
-        //list clients for user initially
-        System.out.println("\n\n Available Clients: ");
-        for (String s : clients.keySet()){
-            System.out.println(s + ", " + clients.get(s).getRAT_IP().getHostAddress());
-        }
+        listClients();
 
         while (true) {
             Scanner input = new Scanner(System.in);
@@ -52,7 +48,7 @@ public class Server {
             //take input and add to input queue
             if (commandFinished) {
                 //set next command to an array split by spaces, input parser will handle errors
-                System.out.println("Please enter a command: ");
+                System.out.println("Please enter a command or type \"stop\" to exit: ");
                 currentCommand = input.nextLine().split(" ");
                 commandFinished = false; //set trigger for command to be run
 
@@ -64,12 +60,22 @@ public class Server {
         }
     }
 
+    //list available clients to console
+    private static void listClients(){
+        System.out.println("\n\n Available Clients: ");
+        for (String s : clients.keySet()){
+            System.out.println(s + ", " + clients.get(s).getRAT_IP().getHostAddress());
+        }
+    }
+
     /*
-    Take user input of a full string as user input
-    parse as a string[] of arguments to parseCommand()
+    breaks first index off an array, returns array with index 1 onward
      */
-    public void command(String args){
-        //TODO Implement this method
+    private static String[] breakOffFirstPart(String[] args){
+        //create new array from everything but the first word in the command
+        String[] nextPart = new String[args.length -1];
+        System.arraycopy(args, 1, nextPart, 0, args.length -1);
+        return nextPart;
     }
 
     /*
@@ -80,8 +86,7 @@ public class Server {
     private static void parseCommand(String[] command){
 
         //create new array from everything but the first word in the command
-        String[] nextPart = new String[command.length -1];
-        System.arraycopy(command, 1, nextPart, 0, command.length -1);
+        String[] nextPart = breakOffFirstPart(command);
 
         switch (command[0]){
             case "server":
@@ -95,15 +100,49 @@ public class Server {
                     n.parseCommand(nextPart);
                     break;
                 } else {
-                    System.out.println("ERR: " + command[0] + " not recognized as a valid maching name.");
+                    System.out.println("ERR: \"" + command[0] + "\" not recognized as a valid maching name.");
                     break;
                 }
         }
 
     }
 
-    private static void parseServerCommand(String[] args){
+    private static void parseServerCommand(String[] command){
 
+        //make sure arguments provided for "server" command
+        try{
+            String[] nextPart = breakOffFirstPart(command);
+            switch (command[0]){
+                case "list" :
+                    parseList(nextPart);
+                    break;
+                default :
+                    System.out.println("ERR: \"" + command[0] + "\" not recognized as a valid server command");
+                    break;
+            }
+        } catch (NegativeArraySizeException n){
+            System.out.println("ERR: no arguments provided for command: server");
+            return;
+        }
+
+    }
+
+    private static void parseList(String[] command){
+        //make sure arguments provided for "server" command
+        try{
+            String[] nextPart = breakOffFirstPart(command);
+            switch (command[0]){
+                case "clients" :
+                    listClients();
+                    break;
+                default :
+                    System.out.println("ERR: \"" + command[0] + "\" not recognized as a valid list argument");
+                    break;
+            }
+        } catch (NegativeArraySizeException n){
+            System.out.println("ERR: no arguments provided for command: list");
+            return;
+        }
     }
 
     /*
