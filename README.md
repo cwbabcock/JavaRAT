@@ -36,7 +36,7 @@ This is designed as a Remote Administration Tool (RAT) that calls back to a Comm
 * **Week 4 (Nov 19 - Nov 26)**
 - Development
 - Adding documentation to github
-* **Week 5 (Nov 26 - Dec 2)**
+* **Week 5 (Nov 26 - Nov 29)**
 - Finish MVP
 - Bug testing / fixing
 - Create presentation
