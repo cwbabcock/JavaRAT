@@ -53,3 +53,7 @@ This is designed as a Remote Administration Tool (RAT) that calls back to a Comm
 2. Expand the deriverables as discussed offline. It is good to see you have a features list for MVP and you can just bring the list into this page.
 3. Think about what you are going to demo in the final presentation and compile the MVP features accordingly. If you have more time, you can always add more features at the end and it will not affect the overall progress of the project, but make sure the core should work first
 
+# Getting Started
+
+
+# Features 
