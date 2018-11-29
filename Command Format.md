@@ -13,4 +13,3 @@ They will be broken up into sections separated by a space.
 
 * client1 pull keyLog
 * server list clients
-* client1 test

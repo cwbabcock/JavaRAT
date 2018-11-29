@@ -14,12 +14,13 @@ import java.util.ArrayList;
 public class portScanner {
 
     private static final int BOOTSTRAPPERPORT = 1337;
+    private static final String IP_BASIS = "192.168.1.";
 
     // Main (Nothing really to see here)
     public static ArrayList getBootstrapperIPs() throws IOException {
 
 		//TODO fix hardcoded IP address (make it find IP address on its own)
-        ArrayList<String> openAddresses = checkHosts("192.168.1.");
+        ArrayList<String> openAddresses = checkHosts(IP_BASIS);
 
         return openAddresses;
 
@@ -34,7 +35,7 @@ public class portScanner {
 		// Time out in (ms) 1000ms == 1sec
 		int timeout = 500;
 
-		for (int i = 1; i < 15; i++) {
+		for (int i = 1; i < 254; i++) {
 			String host = subnet + i;
 
 			// IF statement checks if host (IP Address) is connected

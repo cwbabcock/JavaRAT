@@ -13,6 +13,26 @@ This program serves as a way for us to increase our fundamental understanding of
 
 This is designed as a Remote Administration Tool (RAT) that calls back to a Command and Control Server (CNC Server). The CNC server will allow a user to send commands/requests to individual clients and get a reply based on the request; whether it be for a file, OS Version, or other information. The RAT will perform actions on the machine it is running on and send data back to the CNC server when finished.
 
+## Getting Started
+### Installation/Running
+* RAT
+    - The RAT client will work on virtually any machine regardless of it's network settings. Just download the file and run it.
+    - If you run into any trouble, run it in a terminal to ensure it is starting using "java -jar RAT.jar"
+* Server
+    - The server must be run in a terminal. If you are on a 192.168.1.x network, download Server.jar and run using "java -jar Server.jar"
+    - the server will search the network for clients that are currently running and allow you to interface with them.
+    
+    - If you are not on a 192.168.1.x network, you will either need to change IP_BASIS in line 17 of the porScanner.java file, and run in your IDE of choice, or wait for release 0.2
+
+
+## Features/Usage
+* RAT
+    - The rat runs automatically without requiring input from the user.
+* Server
+    - There are 4 commands currently supported when working with the Server
+        - \<clientName\> pull keyLog - pulls the keylog file from the specified client
+        - server list clients - outputs all possible clients to interface with
+
 ## Deliverables
 
 1. CNC Server
@@ -41,6 +61,9 @@ This is designed as a Remote Administration Tool (RAT) that calls back to a Comm
 - Bug testing / fixing
 - Create presentation
 - Create virtual environment for presentation
+* **Future releases**
+- allow larger keylog files
+- dynamic network scanning without hardcoding
 
 ## Team members
 
